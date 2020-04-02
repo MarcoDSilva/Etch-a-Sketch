@@ -1,0 +1,29 @@
+/*classes para grids e hover effects*/
+body{
+    margin:0;
+    padding:0;
+    background-color: lemonchiffon;
+}
+
+h1 {
+    color: indigo;
+}
+
+#container {
+    text-align: center;
+}
+
+.sketch-grid {
+    margin-top:30px;
+    margin-left: auto;
+    margin-right:auto;
+    border:2px solid plum;
+    width: 800px;
+    height: 460px;
+    display:grid;
+    grid-template-columns: auto auto;
+}
+
+.sketch-grid div {
+    border: 1px solid black;
+}
