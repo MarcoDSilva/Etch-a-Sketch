@@ -3,17 +3,14 @@ const cleanCanvas = document.querySelector('#btn-clear');
 const sketchGrid = document.querySelector('.sketch-grid');
 const btnColors = document.querySelector('#btn-randomColor');
 let color = "";
-
 let gridsToCreate = 0;
 
-//sizes of the grid for calculations of how many grids we create
-var height = sketchGrid.clientHeight;
-var width = sketchGrid.clientWidth;
-
+//button events
 btn.addEventListener('click', getGridNumber);
 cleanCanvas.addEventListener('click', cleanGrid);
 btnColors.addEventListener('click', generateColors);
 
+//functions
 function getGridNumber() {
     resetGrid();
     gridsToCreate = parseInt(prompt("Num of squares 'till max of 80. (Represents 80x80)", 16)); 
@@ -32,8 +29,7 @@ function createDivsOntoGrid(number) {
         const div = document.createElement('div');
         div.addEventListener('mouseover', changeBackground);
         sketchGrid.appendChild(div);
-    }
-    
+    }    
 }
 
 function resetGrid() {
@@ -41,16 +37,20 @@ function resetGrid() {
     gridsToCreate = 0;    
 }
 
-function changeBackground() {
+function changeBackground() {    
     this.classList.add('drawing');
-    if(color !== "") {
+
+    if(color !== ""){
         this.style.backgroundColor = `rgb(${color})`;
-    }
+        this.id = "TESTE"
+    } 
+  
+    console.log(this);
 }
 
 function cleanGrid() {
     const gridElements = document.querySelectorAll('.drawing');
-    gridElements.forEach(grid => grid.classList.remove('drawing'));
+    gridElements.forEach(grid => grid.style.backgroundColor = "mediumaquamarine");
 }
 
 function randomizeRGB() {
@@ -63,4 +63,8 @@ function generateColors() {
     let b = randomizeRGB();
 
     color = r + " " + g + " " + b; 
+}
+
+function darkerBackground() {
+
 }
