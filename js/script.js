@@ -13,11 +13,13 @@ btnColors.addEventListener('click', generateColors);
 //functions
 function getGridNumber() {
     resetGrid();
-    gridsToCreate = parseInt(prompt("Num of squares 'till max of 80. (Represents 80x80)", 16)); 
+    gridsToCreate = parseInt(prompt("Num of squares 'till max of 80 or min of 2. (80x80)", 16)); 
 
-    if(gridsToCreate <= 80) {
+    if(gridsToCreate < 2) {
+        createDivsOntoGrid(2);
+    } else if(gridsToCreate <= 80) {
         createDivsOntoGrid(gridsToCreate);
-    }  else {
+    } else {
         createDivsOntoGrid(80);
     }
 }
