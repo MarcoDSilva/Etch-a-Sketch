@@ -39,13 +39,13 @@ function resetGrid() {
     gridsToCreate = 0;    
 }
 
-function changeBackground() {      
+function changeBackground() {
 
-    if(this.className === 'drawing') {
-        if(this.id !== "") {
+    if (this.className === 'drawing') {
+        if (this.id !== "") {
             let newID = this.id - 10;
             this.id = newID;
-            this.style.filter = `brightness(${newID}%)`;           
+            this.style.filter = `brightness(${newID}%)`;
         } else {
             this.id = "90";
             this.style.filter = `brightness(90%)`;
@@ -53,9 +53,9 @@ function changeBackground() {
         return;
     }
 
-    this.classList.add('drawing');   
+    this.classList.add('drawing');
 
-    if(color !== ""){
+    if (color !== "") {
         this.style.backgroundColor = `rgb(${color})`;
     } else {
         this.style.backgroundColor = `rgb(255,255,255)`;
@@ -65,7 +65,7 @@ function changeBackground() {
 
 function cleanGrid() {
     const gridElements = document.querySelectorAll('.drawing');  
-    gridElements.forEach(grid => grid.removeAttribute('style', 'class', 'id'));
+    gridElements.forEach(grid => removeAttributes(grid));
 }
 
 function randomizeRGB() {
@@ -78,4 +78,10 @@ function generateColors() {
     let b = randomizeRGB();
 
     color = r + " " + g + " " + b; 
+}
+
+function removeAttributes(element) {
+    element.removeAttribute('style');
+    element.removeAttribute('id');
+    element.removeAttribute('class');
 }
