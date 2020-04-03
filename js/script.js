@@ -37,20 +37,33 @@ function resetGrid() {
     gridsToCreate = 0;    
 }
 
-function changeBackground() {    
-    this.classList.add('drawing');
+function changeBackground() {      
+
+    if(this.className === 'drawing') {
+        if(this.id !== "") {
+            let newID = this.id - 10;
+            this.id = newID;
+            this.style.filter = `brightness(${newID}%)`;           
+        } else {
+            this.id = "90";
+            this.style.filter = `brightness(90%)`;
+        }
+        return;
+    }
+
+    this.classList.add('drawing');   
 
     if(color !== ""){
         this.style.backgroundColor = `rgb(${color})`;
-        this.id = "TESTE"
-    } 
-  
-    console.log(this);
+    } else {
+        this.style.backgroundColor = `rgb(255,255,255)`;
+    }
+
 }
 
 function cleanGrid() {
-    const gridElements = document.querySelectorAll('.drawing');
-    gridElements.forEach(grid => grid.style.backgroundColor = "mediumaquamarine");
+    const gridElements = document.querySelectorAll('.drawing');  
+    gridElements.forEach(grid => grid.removeAttribute('style', 'class', 'id'));
 }
 
 function randomizeRGB() {
@@ -63,8 +76,4 @@ function generateColors() {
     let b = randomizeRGB();
 
     color = r + " " + g + " " + b; 
-}
-
-function darkerBackground() {
-
 }
